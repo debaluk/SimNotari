@@ -1,0 +1,36 @@
+Laporan Notaris  :
+1. Tabel detil tb_fidusia dan tabel detil tangguangan sudah dihapus tidak digunakan karena tidak efektif, 
+   filednya gabung di tabel induk/master
+2. Pembuatan tabel baru laporan.
+   tabel ini akan mnampung semua akta sebagai laporan
+3. Yang belum fix
+   1. cetak laporan (belum pasti pdf atau excell)
+   2. Upload file pdf pada master masih ada error
+   3. Ubah password (masih cek lagi kemungkinan harus diubah)
+   4. Tampilan dashboard
+   
+4. Transaksi Sudah Ok
+5. laporan sudah periode tanggal sudah Ok
+
+Perlu testing ulang keseluruhan
+
+
+
+31/10/2018
+=========================================================================================================
+1. tambahan folder upload untuk meyimpan file upload ktp dan jaminan
+2. tambahan field photo pada tabel : tb_klien, tb_bpkb, tb_sertifikat
+3. File file php baru upload file
+4. File sql untuk import
+
+
+2/11/2018
+========================================================================================================
+1. Menu : perbaikan hak akses menu level admin dan level notaris
+2. perbaikan relasi
+3. perbaikan laporan
+4. perbaikan data user
+5. perbaikan ubah password dari profile
+6. dasboard
+7. kunci isian no akta form isian tanggungan dan fidusia
+8. perbaikan format dan teks cetak akta

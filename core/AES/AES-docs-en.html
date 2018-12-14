@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>AES Cipher Class</title>
+<style>
+	body {
+    	background-color: 	#ffffff;
+		font-family: 		verdana;
+		color: 				#000000;		
+	}
+	div.title {
+		position: 			relative;
+		color:				#000000;
+		text-align:			left;
+		font-weight: 		bold;
+		font-size: 			30px;
+		left: 				0px;
+		top: 				0px;		
+		padding: 			4px 0px 4px 0px;
+		margin-bottom: 		4px;
+	}
+	div.menu {
+		font-size: 			20px;
+		padding: 			4px 0px 20px 0px;
+		color:				#000000;
+	}
+	div.chapter {
+		position: 			relative;
+		background-color: 	#ffaa44;
+		color: 				#000000;
+		font-weight: 		bold;
+		padding: 			4px 20px 4px 20px;
+	}
+	div.text{
+		position: 			relative;
+		padding: 			30px 20px 30px 20px;
+	}
+	a {
+		text-decoration: 	none;
+    	color: 				#999999;
+		background-color: 	#ffffff;
+	    font-weight: 		normal;
+	}
+	div.signature {
+		text-decoration: 	none;
+		font-size: 			11px;
+		padding:			1px 0px 1px 0px;
+		color: 				#345678;
+		background-color: 	#ffaa44;
+		font-weight: 		bold;
+		width: 				100%;
+		text-align: 		center;
+	}
+	div.code {
+		border:				1px #000000 dotted;
+		margin:				10px 30px 10px 30px;
+		padding:			10px;
+		font-family:		Courier;
+		font-size:			10px;
+		color: 				#000000;
+		background-color: 	#e0e0e0;
+	}
+</style>
+</head>
+
+<body>
+  <div class="title">
+	<big>AES Class</big>
+  </div>
+  <div class="menu">
+	<a href="#intro">Introduction</a> |
+	<a href="#install">Install</a> |
+	<a href="#config">Configuration</a> |
+	<a href="#functions">Cipher functions</a> |
+	<a href="#examples">Examples</a>
+  </div>
+  <div class="content">
+	<a name="intro"></a>
+	<div class="chapter">Introduction:</div>	
+	<div class="text">
+	This is an implementation of AES (Advanced Encryption Standard) algoritm that can easyly encrypt/decrypt data without external liblary.
+	</div>
+	<a name="install"></a>
+	<div class="chapter">Install:</div>
+	<div class="text">
+	To install this class just copy the file <i>AES.class.php</i> to your php liblary or scripts execution directory.
+	</div>
+	<a name="config"></a>
+	<div class="chapter">Configuration:</div>	
+	<div class="text">
+	There are no configuration options. However during the object creation You can choose the length of key using: AES::AES128, AES::AES192, or AES::AES256 values.
+	</div>
+	<a name="functions"></a>
+	<div class="chapter">Cipher functions:</div>
+	<div class="text">
+	This functions are used to crypt data:
+	<ul>
+		<li><b>AES(key_strength):</b> Class constructor. The parameter <i>key_strength</i> takes values: <i>AES::AES128, AES::AES192, AES::AES256</i>.</li>
+		<li><b>encrypt(content, key):</b>Encrypts 16 bytes of data. The parameter <i>content</i> is 16 bytes of data to encrypt in hexadecimal string representation, <i>key</i> Hexadecimal key with lenght specified in class constructor</li>
+		<li><b>decrypt(content, key):</b>Decrypts 16 bytes of data. The parameter <i>content</i> is 16 bytes of data to decrypt in hexadecimal string representation, <i>key</i> Hexadecimal key with lenght specified in class constructor</li>
+		<li><b>stringToHex(str):</b>Converts string content into hexadecimal representation. The parameter <i>str</i> is string that is converting.</li>
+		<li><b>hexToString(hex):</b>Converts hexadecimal string into charactes string. The parameter <i>hex</i> reprsets the hexadecimal input data</li>
+		<li><b>selfTest():</b>Testing how algoritm works showing time of execution each routine.</li>
+	</ul>
+	</div>
+	<a name="examples"></a>
+	<div class="chapter">Examples:</div>
+	<div class="text">
+	<b>Testing:</b>
+	<div class="code">
+		require_once('./AES.class.php');<br />
+		$Cipher = new AES(AES::AES128);<br />
+		$Cipher->selfTest();
+	</div>
+	<b>Basic use (128bit):</b>
+	<div class="code">
+		require_once('./AES.class.php');<br />
+		$Cipher = new AES();<br />
+		$key_128bit = '2b7e151628aed2a6abf7158809cf4f3c';<br />
+		<br />
+		// Encryption<br />
+		$cryptext = $Cipher->encrypt($Cipher->stringToHex('Alice has a cat'), $key_128bit);<br />
+		print $cryptext;<br />
+		<br />
+		// Decryption<br />
+		$result = $Cipher->encrypt($cryptext, $key_128bit);<br />
+		print $Cipher->hexToString($result);
+	</div>
+	<b>Custom key strength:</b>
+	<div class="code">
+		require_once('./AES.class.php');<br />
+		$Cipher = new AES(AES::AES256);<br />
+		$key_256bit = '603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4';<br />
+		<br />
+		// Encryption<br />
+		$cryptext = $Cipher->encrypt($Cipher->stringToHex('Alice has a cat'), $key_256bit);<br />
+		print $cryptext;<br />
+		<br />
+		// Decryption<br />
+		$result = $Cipher->encrypt($cryptext, $key_256bit);<br />
+		print $Cipher->hexToString($result);
+	</div>
+	</div>
+  </div>
+  <div class="signature">
+  <center>&copy; 2007 Marcin F. Wisniowski</center>
+  </div>
+</body>
+</html>
